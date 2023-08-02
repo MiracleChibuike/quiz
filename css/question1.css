@@ -11,6 +11,7 @@
     --clr-orange: #ffa500;
     --clr-green: #1dc745;
     --clr-darkred: #da4646;
+    --clr-darlColor: #010101;
 }
 body{
     font-family: 'Ubuntu', sans-serif;
@@ -56,6 +57,12 @@ body{
     margin: 15px;
     background-color: var(--clr-darkwhite);
     border-radius: 5px;
+}
+.question1Container > div:hover{
+    background: var(--clr-darlColor);
+    color: var(--clr-white);
+    cursor: pointer;
+    transition: all .3s;
 }
 .questionheader{
     text-align: center;
