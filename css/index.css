@@ -1,0 +1,72 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --clr-white: #fff;
+    --clr-red: #ff0505;
+    --clr-darkblue: rgb(46, 46, 188);
+    --clr-darkwhite: #464646;
+    --clr-orange: #ffa500;
+    --clr-darkorang: #ce9326;
+}
+body{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15px;
+    background: url(../images/images\ -\ 2023-07-29T122426.596.jpeg) no-repeat center/cover;
+    height: 120vh;
+}
+.home{
+    margin-bottom: 15px;
+}
+.instructions{
+    background-color: var(--clr-white);
+    border-radius: 10px;
+    padding: 5px;
+    line-height: 2;
+}
+#user{
+    border: 2px solid var(--clr-darkwhite);
+    outline: none;
+    border-radius: 5px;
+}
+.homeHeader{
+    text-align: center;
+}
+#userName{
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.startQuizButton{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.startButton{
+    background: var(--clr-orange);
+    border-radius: 10px;
+    height: 45px;
+    border: none;
+    width: 100px;
+    border: 2px solid var(--clr-white);
+}
+
+.startButton a{
+    color: var(--clr-white);
+    text-decoration: none;
+    font-weight: bold;
+}
+.startButton:hover{
+    transform: translateX(10px);
+    transition: .7s;
+}
+
+/* media querry section */
+@media  (min-width: 1px) and (max-width: 700px) {
+    body{
+        height: auto;
+    }
+}

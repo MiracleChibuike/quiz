@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTechQuestion 1</title>
+        <!-- Bootstrap css link -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <!-- customised css -->
+        <link rel="stylesheet" href="css/question1.css">
+        <!-- google fonts -->
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&family=Ubuntu:wght@500&display=swap');
+          </style>
+</head>
+<body>
+    <!-- main-container -->
+    <div class="container-fluid">
+        <p class="firstp">Question 1 of 20:</p>
+        <div class="question1Container">
+            <h3 class="questionheader">
+                What does "HTML" stands for?
+            </h3>
+            <div >
+                <span class="lines">A</span>
+                <input type="radio" name="buttons" id="correctAnswer">
+                <span class="options">Hyper Text Mark-up Language</span>
+            </div>
+            <div>
+                <span class="lines">B</span>
+                <input type="radio" name="buttons" id="incorrect">
+                <span class="options">Hyper Text Margin-Link</span>
+            </div>
+            <div>
+                <span class="lines">C</span>
+                <input type="radio" name="buttons" id="extraWrong" >
+                <span class="options">Hero Text Mark-up Language</span>
+            </div>
+            <div>
+                <span class="lines">D</span>
+                <input type="radio" name="buttons"  id="wrong">
+                <span class="options">Hyper Tips Mark-Up Language</span>
+            </div>
+            <p class="answer"></p> 
+            <!-- <span class="resultScore"></span> -->
+          <section>
+            <button id="Checker">
+                check Answer
+            </button>
+          </section>
+        </div>
+        
+        <button class="activate">
+            <a href="question2.html" target="_blank">Next Question</a>
+        </button>
+    </div>
+    
+
+
+
+
+        <!-- Bootsrap js link -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <!-- custom JS -->
+        <script>
+            let rightANswer, worngAnswer, incorrectAnswer, extraIncorrect;
+            rightANswer = document.getElementById("correctAnswer");
+            worngAnswer = document.getElementById("wrong");
+            incorrectAnswer = document.getElementById("extraWrong");
+            extraIncorrect = document.getElementById("incorrect");
+            var displayMsg = document.querySelector(".answer");
+            var calculateAnswer = document.getElementById("Checker");
+            let score = 2;
+            // let totalScore = document.querySelector(".resultScore");
+            calculateAnswer.addEventListener("click", function (){
+                if (rightANswer.checked) {
+                displayMsg.textContent = "You are correct"
+                displayMsg.style.color = "green"
+                score = score + 0;
+                alert(`You got ${score} points`)
+                console.log(score)
+                // totalScore.textContent = score.len;
+                // console.log(totalScore)
+            }else if (worngAnswer.checked) {
+                displayMsg.textContent = "You are wrong the correct answer is 'A' "
+                displayMsg.style.color = "red"
+                score = 0;
+                alert(`You got ${score} points`)
+                console.log(score)
+            } else if (incorrectAnswer.checked) {
+                displayMsg.textContent = "You are wrong the correct answer is 'A' "
+                displayMsg.style.color = "red"
+                score = 0;
+                alert(`You got ${score} points`)
+                console.log(score)
+            } else if (extraIncorrect.checked) {
+                displayMsg.textContent = "You are wrong the correct answer is 'A' "
+                displayMsg.style.color = "red"
+                score = 0;
+                alert(`You got ${score} points`)
+                console.log(score)
+            }else{
+                alert("Please select a button")
+            }
+            })
+        </script>   
+</body>
+</html>
