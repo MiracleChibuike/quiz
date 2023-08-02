@@ -12,6 +12,8 @@
         <style>
             @import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&family=Ubuntu:wght@500&display=swap');
           </style>
+            <!-- font awesome link personal kit -->
+            <script src="https://kit.fontawesome.com/9b5c4c6b23.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- main-container -->
@@ -19,27 +21,27 @@
         <p class="firstp">Question 7 of 20:</p>
         <div class="question1Container">
             <h3 class="questionheader">
-                What are HTML block Elements?
+                Which attribute is used to link an external CSS file to an HTML document?
             </h3>
-            <div  id="correctAnswer">
+            <div>
                 <span class="lines">A</span>
-                <input type="radio" name="buttons">
-                <span class="options">Elements that are in the block</span>
+                <input type="radio" name="buttons" id="wrong">
+                <span class="options"><strong>'ref.CSS'</strong></span>
             </div>
             <div>
                 <span class="lines">B</span>
                 <input type="radio" name="buttons" id="correctAnswer" >
-                <span class="options">Elements that takes up the entire space on a page</span>
+                <span class="options"><strong>'href'</strong></span>
             </div>
             <div>
                 <span class="lines">C</span>
-                <input type="radio" name="buttons" >
-                <span class="options">Elements that do not take up any space</span>
+                <input type="radio" name="buttons" id="extraWrong">
+                <span class="options"><strong>'a.href'</strong></span>
             </div>
             <div>
                 <span class="lines">D</span>
-                <input type="radio" name="buttons" >
-                <span class="options">An element that are in a block shape</span>
+                <input type="radio" name="buttons" id="incorrect" >
+                <span class="options">All of the above</span>
             </div>
             <p class="answer"></p> 
           <section>
@@ -49,10 +51,14 @@
           </section>
         </div>
         <button class="previous">
-           <a href="question6.html"> Previous Question</a>
+           <a href="question6.html">
+            <i class="fa-solid fa-angles-left"></i>
+            Previous Question</a>
         </button>
         <button class="activate">
-            <a href="question8.html" target="_blank">Next Question</a>
+            <a href="#" target="_blank" >Next Question
+                <i class="fa-solid fa-angle-right"></i>
+            </a>
         </button>
     </div>
     
@@ -63,6 +69,45 @@
         <!-- Bootsrap js link -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <!-- custom JS -->
-        <script src="js/question1.js"></script>    
+        <script>
+                    let rightANswer, worngAnswer, incorrectAnswer, extraIncorrect;
+            rightANswer = document.getElementById("correctAnswer");
+            worngAnswer = document.getElementById("wrong");
+            incorrectAnswer = document.getElementById("extraWrong");
+            extraIncorrect = document.getElementById("incorrect");
+            var displayMsg = document.querySelector(".answer");
+            var calculateAnswer = document.getElementById("Checker");
+            let score = 2;
+            calculateAnswer.addEventListener("click", function (){
+                if (rightANswer.checked) {
+                displayMsg.textContent = "You are correct"
+                displayMsg.style.color = "green"
+                score = score + 0;
+                alert(`You got ${score} points`)
+                console.log(score)
+            }else if (worngAnswer.checked) {
+                displayMsg.textContent = "You are wrong the correct answer is 'B' "
+                displayMsg.style.color = "red"
+                score = 0;
+                alert(`You got ${score} points`)
+                console.log(score)
+            } else if (incorrectAnswer.checked) {
+                displayMsg.textContent = "You are wrong the correct answer is 'B' "
+                displayMsg.style.color = "red"
+                score = 0;
+                alert(`You got ${score} points`)
+                console.log(score)
+            } else if (extraIncorrect.checked) {
+                displayMsg.textContent = "You are wrong the correct answer is 'B' "
+                displayMsg.style.color = "red"
+                score = 0;
+                alert(`You got ${score} points`)
+                console.log(score)
+            }else{
+                alert("Please select a button")
+            }
+            // console.log(rightANswer)
+            })
+        </script>  
 </body>
 </html>

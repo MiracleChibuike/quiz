@@ -2,8 +2,9 @@
 // let realName = prompt("what is your name?");
 
 let activate = document.querySelector(".startButton").addEventListener("click", function() {
-    let agentUser = document.getElementById("userName");
-    let realUser = document.getElementById("user");
-    agentUser.innerHTML = realUser.value;
+    let realUser = document.getElementById("userName");
+    let agentUser = prompt('Enter Quiz takers Name');
+    realUser.textContent = agentUser;
+    console.log(realUser);
 })
 
