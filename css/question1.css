@@ -24,7 +24,7 @@ body{
 .question1Container{
     background-color: var(--clr-white);
     border-radius: 15px;
-    min-height: 50vh;
+    /* min-height: 50vh; */
     min-width: 50vh;
 }
 .firstp{

@@ -91,7 +91,14 @@
                 score = score + 0;
                 alert(`You got ${score} points`)
                 console.log(score)
-            }else if (worngAnswer.checked) {
+            }else if (errorAnswer.checked) {
+                displayMsg.textContent = "You are wrong the correct answer is 'C' "
+                displayMsg.style.color = "red"
+                score = 0;
+                alert(`You got ${score} points`)
+                console.log(score)
+            }
+            else if (worngAnswer.checked) {
                 displayMsg.textContent = "You are wrong the correct answer is 'C' "
                 displayMsg.style.color = "red"
                 score = 0;
@@ -112,7 +119,7 @@
             }else{
                 alert("Please select a button")
             }
-            // console.log(rightANswer)
+            console.log(errorAnswer)
             })
         </script>
 </body>
