@@ -6,5 +6,9 @@ let activate = document.querySelector(".startButton").addEventListener("click", 
     let agentUser = prompt('Enter Quiz takers Name');
     realUser.textContent = agentUser;
     console.log(realUser);
+    resetScore();
 })
 
+function resetScore() {
+    localStorage.setItem('scoreHistory', JSON.stringify([]));
+}

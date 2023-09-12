@@ -44,7 +44,8 @@
                 <input type="radio" name="buttons" id="wrong" >
                 <span class="options">None of the following tags is used</span>
             </div>
-            <p class="answer"></p> 
+            <p class="answer"></p>
+            <span class="resultScore"></span> 
           <section>
             <button id="Checker">
                 check Answer
@@ -78,37 +79,86 @@
             extraIncorrect = document.getElementById("incorrect");
             var displayMsg = document.querySelector(".answer");
             var calculateAnswer = document.getElementById("Checker");
-            let score = 2;
+            let totalScoreElement = document.querySelector(".resultScore");
+            let scoreHistory = localStorage.getItem('scoreHistory');
+            if (scoreHistory) {
+                scoreHistory = JSON.parse(scoreHistory);
+            } else {
+                scoreHistory = [];
+            };
+            console.log(scoreHistory);
+            let prevScore = scoreHistory[scoreHistory.length -1] || 0;
+            console.log(prevScore + "prevScore");
+            let totalScore = prevScore;
+            let questionAnswered = false;
+            
+            // let score = 2;
             calculateAnswer.addEventListener("click", function (){
                 if (rightANswer.checked) {
                 displayMsg.textContent = "You are correct"
                 displayMsg.style.color = "green"
-                score = score + 0;
+                // (mco) score = score + 0;
+                score = 2
                 alert(`You got ${score} points`)
-                console.log(score)
-            }else if (worngAnswer.checked) {
+                // (mco) console.log(score)
+                console.log(score + "TQscore");
+                totalScore = prevScore + score
+                totalScoreElement.textContent = `Total Score: ${totalScore}`;
+                console.log(totalScore + "totalScore")
+                questionAnswered = true;
+            }else if (worngAnswer.checked || incorrectAnswer.checked || extraIncorrect.checked) {
                 displayMsg.textContent = "You are wrong the correct answer is 'A' "
                 displayMsg.style.color = "red"
                 score = 0;
                 alert(`You got ${score} points`)
-                console.log(score)
-            } else if (incorrectAnswer.checked) {
-                displayMsg.textContent = "You are wrong the correct answer is 'A' "
-                displayMsg.style.color = "red"
-                score = 0;
-                alert(`You got ${score} points`)
-                console.log(score)
-            } else if (extraIncorrect.checked) {
-                displayMsg.textContent = "You are wrong the correct answer is 'A' "
-                displayMsg.style.color = "red"
-                score = 0;
-                alert(`You got ${score} points`)
-                console.log(score)
+                // (mco) console.log(score)
+                console.log(score + "TQscore");
+                totalScore = prevScore + score
+                totalScoreElement.textContent = `Total Score: ${totalScore}`;
+                console.log(totalScore + "totalScore")
+                questionAnswered = true;
+            // } else if (incorrectAnswer.checked) {
+            //     displayMsg.textContent = "You are wrong the correct answer is 'A' "
+            //     displayMsg.style.color = "red"
+            //     score = 0;
+            //     alert(`You got ${score} points`)
+            //     console.log(score)
+            // } else if (extraIncorrect.checked) {
+            //     displayMsg.textContent = "You are wrong the correct answer is 'A' "
+            //     displayMsg.style.color = "red"
+            //     score = 0;
+            //     alert(`You got ${score} points`)
+            //     console.log(score)
             }else{
                 alert("Please select a button")
             }
             // console.log(rightANswer)
             })
+
+            function saveProgress() {
+                let nextQuestion = document.querySelector(".activate");
+                nextQuestion.addEventListener("click", function (){
+                    if (questionAnswered) {
+                        scoreHistory.push(totalScore);
+                        localStorage.setItem('scoreHistory', JSON.stringify(scoreHistory));
+                        console.log(totalScore + "saving");
+                    }
+                    questionAnswered = false;
+                });
+            }
+            saveProgress();
+
+            function revertProgress() {
+                let prevQuestion = document.querySelector(".previous");
+                prevQuestion.addEventListener("click", function() {
+                    scoreHistory.pop();
+                    totalScore = scoreHistory[scoreHistory.length-1] || 0;
+                    localStorage.setItem('scoreHistory', JSON.stringify(scoreHistory));
+                    // console.log(totalScore + "reverted");
+                    questionAnswered = true;
+                });
+            }
+            revertProgress();
         </script> 
 </body>
 </html>
