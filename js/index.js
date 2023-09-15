@@ -38,18 +38,18 @@ function updateScore(isCorrect, correctAnswer) {
         displayMsg.style.color = "green"
         score = 2;
         alert(`You got ${score} points`)
-        console.log(score + "TQscore");
+        // console.log(score + "TQscore");
         totalScore = prevScore + score
     } else {
         displayMsg.textContent = "You are wrong the correct answer is '" + correctAnswer + "'"
         displayMsg.style.color = "red"
         score = 0;
         alert(`You got ${score} points`)
-        console.log(score + "TQscore");
+        // console.log(score + "TQscore");
         totalScore = prevScore + score    
     }
     totalScoreElement.textContent = `Total Score: ${totalScore}`;
-    console.log(totalScore + "totalScore")
+    // console.log(totalScore + "totalScore")
     questionAnswered = true; 
 }
 
@@ -58,7 +58,7 @@ function saveProgress() {
         if (questionAnswered) {
             scoreHistory.push(totalScore);
             localStorage.setItem('scoreHistory', JSON.stringify(scoreHistory));
-            console.log(totalScore + "saving");
+            // console.log(totalScore + "saving");
         }
        questionAnswered = false; 
 }
