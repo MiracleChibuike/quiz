@@ -87,7 +87,6 @@
             console.log(scoreHistory);
             let prevScore = scoreHistory[scoreHistory.length -1] || 0;
             console.log(prevScore + "prevScore");
-            // (mco) let score = 2;
             let totalScore = prevScore; 
             let questionAnswered = false;
 
@@ -107,26 +106,11 @@
                 displayMsg.style.color = "red"
                 score = 0;
                 alert(`You got ${score} points`)
-                // console.log(score)
                 console.log(score + "TQscore");
                 totalScore = prevScore + score
                 totalScoreElement.textContent = `Total Score: ${totalScore}`;
                 console.log(totalScore + "totalScore")
                 questionAnswered = true;
-                // score = totalScore;
-                // localStorage.setItem('score', score);
-            // (mco) } else if (incorrectAnswer.checked) {
-            //     displayMsg.textContent = "You are wrong the correct answer is 'A' "
-            //     displayMsg.style.color = "red"
-            //     score = 0;
-            //     alert(`You got ${score} points`)
-            //     console.log(score)
-            // } else if (extraIncorrect.checked) {
-            //     displayMsg.textContent = "You are wrong the correct answer is 'A' "
-            //     displayMsg.style.color = "red"
-            //     score = 0;
-            //     alert(`You got ${score} points`)
-            // (mco)     console.log(score)
             }else{
                 alert("Please select a button")
             }

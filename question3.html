@@ -91,15 +91,13 @@
             let totalScore = prevScore;
             let questionAnswered = false;
             
-            // (mco) let score = 2;
+            
             calculateAnswer.addEventListener("click", function (){
                 if (rightANswer.checked) {
                 displayMsg.textContent = "You are correct"
                 displayMsg.style.color = "green"
-                // (mco) score = score + 0;
                 score = 2;
                 alert(`You got ${score} points`)
-                // (mco) console.log(score)
                 console.log(score + "TQscore");
                 totalScore = prevScore + score
                 totalScoreElement.textContent = `Total Score: ${totalScore}`;
@@ -110,28 +108,14 @@
                 displayMsg.style.color = "red"
                 score = 0;
                 alert(`You got ${score} points`)
-                // (mco) console.log(score)
                 console.log(score + "TQscore");
                 totalScore = prevScore + score
                 totalScoreElement.textContent = `Total Score: ${totalScore}`;
                 console.log(totalScore + "totalScore")
                 questionAnswered = true;
-            // (mco) } else if (incorrectAnswer.checked) {
-            //     displayMsg.textContent = "You are wrong the correct answer is 'B' "
-            //     displayMsg.style.color = "red"
-            //     score = 0;
-            //     alert(`You got ${score} points`)
-            //     console.log(score)
-            // } else if (extraIncorrect.checked) {
-            //     displayMsg.textContent = "You are wrong the correct answer is 'B' "
-            //     displayMsg.style.color = "red"
-            //     score = 0;
-            //     alert(`You got ${score} points`)
-            //     console.log(score)
             }else{
                 alert("Please select a button")
             }
-            // console.log(rightANswer)
             })
 
             function saveProgress() {
@@ -153,7 +137,6 @@
                     scoreHistory.pop();
                     totalScore = scoreHistory[scoreHistory.length-1] || 0;
                     localStorage.setItem('scoreHistory', JSON.stringify(scoreHistory));
-                    // console.log(totalScore + "reverted");
                     questionAnswered = true;
                 });
             }
