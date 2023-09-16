@@ -1,13 +1,24 @@
 // let realName = prompt("what is your name?");
 let activate = document.querySelector(".startButton");
-let scoreHistory = localStorage.getItem('scoreHistory');
- if (scoreHistory) {
+let totalScoreElement = document.querySelector(".resultScore");
+let scoreHistory;
+try {
+    scoreHistory = localStorage.getItem('scoreHistory');
+} catch (error) {
+    console.log("scoreHistory is not available");
+    totalScoreElement.textContent = "Total Score is unavailable from local storage.";
+}
+
+if (scoreHistory) {
     scoreHistory = JSON.parse(scoreHistory);
 } else {
     scoreHistory = [];
 };
 let prevScore = scoreHistory[scoreHistory.length -1] || 0;
 let totalScore = prevScore;
+if (totalScoreElement) {
+    totalScoreElement.textContent = `Total Score: ${totalScore}`;
+}
 let questionAnswered = false;
 let nextQuestion = document.querySelector(".activate");
 let prevQuestion = document.querySelector(".previous");
@@ -31,7 +42,6 @@ function resetScore() {
 function updateScore(isCorrect, correctAnswer) {
     let score = 0
     let displayMsg = document.querySelector(".answer");
-    let totalScoreElement = document.querySelector(".resultScore");
     
     if(isCorrect) {
         displayMsg.textContent = "You are correct"
