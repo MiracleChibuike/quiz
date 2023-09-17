@@ -3,7 +3,7 @@
 
 let activate = document.querySelector(".startButton").addEventListener("click", function() {
     let realUser = document.getElementById("userName");
-    let agentUser = prompt('Enter Quiz takers Name');
+    let agentUser = prompt('Enter Your Name To Start');
     realUser.textContent = agentUser;
     console.log(realUser);
 })
