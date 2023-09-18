@@ -26,6 +26,8 @@ body{
     border-radius: 15px;
     /* min-height: 50vh; */
     min-width: 50vh;
+    margin-bottom: 200px;
+    overflow: hidden;
 }
 .firstp{
     text-align: center;
@@ -66,7 +68,9 @@ body{
 }
 .questionheader{
     text-align: center;
-    margin: 10px;
+    margin: 30px;
+    position: relative;
+    top: 10px;
 }
 .lines{
     margin: 10px;
@@ -95,6 +99,7 @@ body{
     font-weight: bold;
     font-size: 12px;
     margin-left: 10px;
+    margin-bottom: 10px;
 }
 #Checker:hover{
     transform: translateY(-5px);
@@ -111,6 +116,8 @@ body{
     color: var(--clr-white);
     text-decoration: none;
     font-weight: bold;
+    position: relative;
+    bottom: 190px;
 }
 .previous:hover{
     transform: translateX(-10px);
@@ -126,6 +133,8 @@ body{
     width: 100px;
     margin-left: 10px;
     font-size: 12px;
+    position: relative;
+    bottom: 190px;
 }
 .activate:hover{
     transform: translateX(10px);
@@ -143,8 +152,7 @@ body{
 @media  (min-width: 1px) and (max-width: 700px) {
     body{
         height: 120vh;
-        overflow-y: scroll;
-        overflow-x: hidden;
+        overflow: hidden;
     }
     .question1Container{
         min-height: 50vh;
