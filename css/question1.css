@@ -68,9 +68,9 @@ body{
 }
 .questionheader{
     text-align: center;
-    margin: 30px;
+    margin: 20px;
     position: relative;
-    top: 10px;
+    /* top: 10px; */
 }
 .lines{
     margin: 10px;
@@ -99,7 +99,7 @@ body{
     font-weight: bold;
     font-size: 12px;
     margin-left: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 2px;
 }
 #Checker:hover{
     transform: translateY(-5px);
@@ -117,7 +117,7 @@ body{
     text-decoration: none;
     font-weight: bold;
     position: relative;
-    bottom: 190px;
+    bottom: 195px;
 }
 .previous:hover{
     transform: translateX(-10px);
@@ -134,7 +134,7 @@ body{
     margin-left: 10px;
     font-size: 12px;
     position: relative;
-    bottom: 190px;
+    bottom: 195px;
 }
 .activate:hover{
     transform: translateX(10px);
