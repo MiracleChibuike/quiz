@@ -73,6 +73,7 @@ function saveProgress() {
        questionAnswered = false; 
 }
 
+// score-progress
 // function to revert score progress
 function revertProgress() {
         scoreHistory.pop();
@@ -81,6 +82,13 @@ function revertProgress() {
         questionAnswered = true;
         window.history.back();
 }
+=======
+let activate = document.querySelector(".startButton").addEventListener("click", function() {
+    let realUser = document.getElementById("userName");
+    let agentUser = prompt('Enter Your Name To Start');
+    realUser.textContent = agentUser;
+    console.log(realUser);
+})
 
 // next question button event listener to trigger saving the total score
 if (nextQuestion) {
