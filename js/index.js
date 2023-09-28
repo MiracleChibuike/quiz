@@ -14,6 +14,7 @@ if (scoreHistory) {
 } else {
     scoreHistory = [];
 };
+// console.log(scoreHistory);
 let prevScore = scoreHistory[scoreHistory.length -1] || 0;
 let totalScore = prevScore;
 if (totalScoreElement) {
@@ -82,13 +83,6 @@ function revertProgress() {
         questionAnswered = true;
         window.history.back();
 }
-=======
-let activate = document.querySelector(".startButton").addEventListener("click", function() {
-    let realUser = document.getElementById("userName");
-    let agentUser = prompt('Enter Your Name To Start');
-    realUser.textContent = agentUser;
-    console.log(realUser);
-})
 
 // next question button event listener to trigger saving the total score
 if (nextQuestion) {
