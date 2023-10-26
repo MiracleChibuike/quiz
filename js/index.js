@@ -33,16 +33,6 @@ function checkCurrentQuestion() {
     } else {
         currentQuestion = 1;
     }
-    
-
-    if (prevQuestion) {
-        let prevQuestionNumber = currentQuestion - 1;
-        prevQuestion.href = `question${prevQuestionNumber}.html`;
-    }
-    if (nextQuestion) {
-        let nextQuestionNumber = currentQuestion + 1;
-        nextQuestion.href = `question${nextQuestionNumber}.html`;
-    }
 };
 
 // event listener to start the quiz
@@ -102,11 +92,8 @@ function saveProgress(event) {
             console.log(totalScore + "saving");
             currentQuestion++;
             localStorage.setItem('currentQuestion', JSON.stringify(currentQuestion));
-        } else {
-            event.preventDefault();
-            alert(`Please answer Question ${currentQuestion} before continuing.`);
-        }
-       questionAnswered = false; 
+        } 
+       questionAnswered = false;
 }
 
 // score-progress
@@ -121,14 +108,21 @@ function revertProgress() {
         questionAnswered = true;
         currentQuestion--;
         localStorage.setItem('currentQuestion', JSON.stringify(currentQuestion));
-        window.history.back();
 }
 
 // next question button event listener to trigger saving the total score
 if (nextQuestion) {
     nextQuestion.addEventListener("click", function(event) {
-        checkCurrentQuestion();
-        saveProgress(event);
+        if (questionAnswered) {
+            checkCurrentQuestion();
+            saveProgress(event);
+            let nextQuestionNumber = currentQuestion;
+            window.location.href = `question${nextQuestionNumber}.html`;
+        } else {
+            alert(`Please answer Question ${currentQuestion}, then click check Answer before continuing.`);
+            event.preventDefault();
+        }
+        
 });
 }
 // previous question button event listener to trigger reverting the total score 
@@ -136,5 +130,8 @@ if (prevQuestion) {
     prevQuestion.addEventListener("click", function(event) {
         checkCurrentQuestion();
         revertProgress();
+        let prevQuestionNumber = currentQuestion;
+        window.location.href = `question${prevQuestionNumber}.html`;
+        console.log(prevQuestionNumber);
 });
 }
