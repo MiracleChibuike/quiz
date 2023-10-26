@@ -14,7 +14,7 @@ if (scoreHistory) {
 } else {
     scoreHistory = [];
 };
-console.log(scoreHistory);
+// console.log(scoreHistory);
 
 let prevScore = scoreHistory[scoreHistory.length -1] || 0;
 let totalScore = prevScore;
@@ -25,7 +25,7 @@ let questionAnswered = false;
 let nextQuestion = document.querySelector(".activate");
 let prevQuestion = document.querySelector(".previous");
 let currentQuestion = localStorage.getItem('currentQuestion');
-console.log(currentQuestion);
+// console.log(currentQuestion);
 
 function checkCurrentQuestion() {
     if (currentQuestion) {
@@ -66,18 +66,18 @@ function updateScore(isCorrect, correctAnswer) {
         displayMsg.style.color = "green"
         score = 2;
         alert(`You got ${score} points`)
-        console.log(score + "TQscore");
+        // console.log(score + "TQscore");
         totalScore = prevScore + score
     } else {
         displayMsg.textContent = "You are wrong the correct answer is '" + correctAnswer + "'"
         displayMsg.style.color = "red"
         score = 0;
         alert(`You got ${score} points`)
-        console.log(score + "TQscore");
+        // console.log(score + "TQscore");
         totalScore = prevScore + score    
     }
     totalScoreElement.textContent = `Total Score: ${totalScore}`;
-    console.log(totalScore + "totalScore")
+    // console.log(totalScore + "totalScore")
     questionAnswered = true; 
 }
 
@@ -89,7 +89,7 @@ function saveProgress(event) {
             } 
             scoreHistory.push(totalScore);
             localStorage.setItem('scoreHistory', JSON.stringify(scoreHistory));
-            console.log(totalScore + "saving");
+            // console.log(totalScore + "saving");
             currentQuestion++;
             localStorage.setItem('currentQuestion', JSON.stringify(currentQuestion));
         } 
@@ -132,6 +132,5 @@ if (prevQuestion) {
         revertProgress();
         let prevQuestionNumber = currentQuestion;
         window.location.href = `question${prevQuestionNumber}.html`;
-        console.log(prevQuestionNumber);
 });
 }
