@@ -15,6 +15,7 @@ if (scoreHistory) {
     scoreHistory = [];
 };
 // console.log(scoreHistory);
+
 let prevScore = scoreHistory[scoreHistory.length -1] || 0;
 let totalScore = prevScore;
 if (totalScoreElement) {
@@ -23,6 +24,16 @@ if (totalScoreElement) {
 let questionAnswered = false;
 let nextQuestion = document.querySelector(".activate");
 let prevQuestion = document.querySelector(".previous");
+let currentQuestion = localStorage.getItem('currentQuestion');
+// console.log(currentQuestion);
+
+function checkCurrentQuestion() {
+    if (currentQuestion) {
+        currentQuestion = JSON.parse(currentQuestion);
+    } else {
+        currentQuestion = 1;
+    }
+};
 
 // event listener to start the quiz
 if (activate) {
@@ -31,12 +42,18 @@ if (activate) {
         let agentUser = prompt('Enter Quiz takers Name');
         realUser.textContent = agentUser;
         console.log(realUser);
+        resetQuestions();
         resetScore();
     })
 }
 
 function resetScore() {
     localStorage.setItem('scoreHistory', JSON.stringify([]));
+}
+
+function resetQuestions() {
+    currentQuestion = 1;
+    localStorage.setItem('currentQuestion', JSON.stringify(currentQuestion));
 }
 
 // logic for checking answer and updating score
@@ -65,30 +82,55 @@ function updateScore(isCorrect, correctAnswer) {
 }
 
 // function to save score progress
-function saveProgress() {
+function saveProgress(event) {
         if (questionAnswered) {
+            if (currentQuestion === 7) {  // Replace 7 with the total number of questions currently available to answer
+                return; 
+            } 
             scoreHistory.push(totalScore);
             localStorage.setItem('scoreHistory', JSON.stringify(scoreHistory));
             // console.log(totalScore + "saving");
-        }
-       questionAnswered = false; 
+            currentQuestion++;
+            localStorage.setItem('currentQuestion', JSON.stringify(currentQuestion));
+        } 
+       questionAnswered = false;
 }
 
 // score-progress
 // function to revert score progress
 function revertProgress() {
+    if (currentQuestion === 1) {   // Stop the function if the first question is reached
+        return;
+    }    
         scoreHistory.pop();
         totalScore = scoreHistory[scoreHistory.length-1] || 0;
         localStorage.setItem('scoreHistory', JSON.stringify(scoreHistory));
         questionAnswered = true;
-        window.history.back();
+        currentQuestion--;
+        localStorage.setItem('currentQuestion', JSON.stringify(currentQuestion));
 }
 
 // next question button event listener to trigger saving the total score
 if (nextQuestion) {
-    nextQuestion.addEventListener("click", saveProgress);
-};
+    nextQuestion.addEventListener("click", function(event) {
+        if (questionAnswered) {
+            checkCurrentQuestion();
+            saveProgress(event);
+            let nextQuestionNumber = currentQuestion;
+            window.location.href = `question${nextQuestionNumber}.html`;
+        } else {
+            alert(`Please answer Question ${currentQuestion}, then click check Answer before continuing.`);
+            event.preventDefault();
+        }
+        
+});
+}
 // previous question button event listener to trigger reverting the total score 
 if (prevQuestion) {
-    prevQuestion.addEventListener("click", revertProgress);
-};
+    prevQuestion.addEventListener("click", function(event) {
+        checkCurrentQuestion();
+        revertProgress();
+        let prevQuestionNumber = currentQuestion;
+        window.location.href = `question${prevQuestionNumber}.html`;
+});
+}
